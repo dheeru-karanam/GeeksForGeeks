@@ -38,12 +38,12 @@ char peek(struct stack *S){
 
 int main(){
 	struct stack *Stack;
-	char *str=""; 
+	char *str="("; 
 	Stack = (struct stack *)malloc(sizeof(struct stack));
 	Stack->capacity = strlen(str);
 	Stack->top = -1;
 	Stack->arr = (int *)malloc(sizeof(int)*Stack->capacity);
-	printf("%s",str);
+	printf("%s\n",str);
 	for(int i=0;str[i]!='\0';i++){
 		if(str[i]=='(' || str[i] =='[' || str[i] =='{'){
 			push(Stack, str[i]);			
@@ -64,7 +64,11 @@ int main(){
 			}
 		}
 	}
-	printf("\n\nMatched \n");
+	if(strlen(str)>1)
+		printf("\n\nMatched \n");
+	else{
+		printf("Empty\n");
+	}
 	free(Stack);
 	return 0;
 }
